@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Of The Day</title>
+
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #111;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .quote-box {
+            max-width: 700px;
+            padding: 40px;
+            text-align: center;
+            font-size: 2rem;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quote-box" id="quote"></div>
+
+<script>
+const quotes = [
+    "The best way to predict the future is to invent it.",
+    "Done is better than perfect.",
+    "Curiosity is more powerful than certainty.",
+    "Small steps every day become big changes.",
+    "Ideas are cheap. Execution is priceless.",
+    "Every expert was once a beginner.",
+    "Living life is like taking a hike; you need to go through the ups and downs to get to the end",
+    "If you judge a fish by it's ability to clime a tree it will live it's whole life thinking it was useless",
+    "You must take care of an apple tree before the fruits will take care of you",
+    "No one can walk out of his own story, but everyone can it in their own diraction",
+	"a dumb person will reject you an smart person will suspect you but only a wise person will help you"
+];
+
+// Number of days since Unix epoch
+const dayNumber = Math.floor(Date.now() / 86400000);
+
+// Simple integer hash function
+function hash(x) {
+    x = ((x >>> 16) ^ x) * 0x45d9f3b;
+    x = ((x >>> 16) ^ x) * 0x45d9f3b;
+    x = (x >>> 16) ^ x;
+    return x >>> 0;
+}
+
+const index = hash(dayNumber) % quotes.length;
+
+document.getElementById("quote").textContent = quotes[index];
+</script>
+
+</body>
+</html>
